@@ -11,7 +11,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            String path = "D:/Camera";
+            String path = "D:/Рабочий стол/Фото, видео с телефона";
             DirectoryInfo dI = new DirectoryInfo(path);
             FileInfo[] allFiles = dI.GetFiles();
             try
@@ -22,7 +22,7 @@ namespace ConsoleApp1
                     DateTime creationTime = fi.LastWriteTime;
                     string nameDirectory = $"{creationTime.Year}.{creationTime.Month:D2}.{creationTime.Day:D2}";
                     Directory.CreateDirectory($"{path}/{nameDirectory}");
-                    Console.Write("{0} - Папка: {1} - Файл: {2} - ...", $"{counter}/{allFiles.Length}",$"{path}/{nameDirectory}", fi.Name);
+                    Console.Write("{0} - Папка: {1} - Файл: {2} - ...", $"{counter++}/{allFiles.Length}",$"{path}/{nameDirectory}", fi.Name);
                     File.Copy($"{path}/{fi.Name}", $"{path}/{nameDirectory}/{fi.Name}");
                     Console.WriteLine(" - Успех!");
                 }
